@@ -26,7 +26,12 @@ const BackgroundEffects = () => (
 );
 
 // 2. مكون الـ "Radio Buttons" بستايل الكبسولات الخاصة بالهوية
-const ProjectTypeSelector = ({ selected, onChange }) => {
+interface ProjectTypeSelectorProps {
+  selected: string;
+  onChange: (type: string) => void;
+}
+
+const ProjectTypeSelector = ({ selected, onChange }: ProjectTypeSelectorProps) => {
   const types = ["Branding", "Web Design", "Social Media", "Other"];
   
   return (
