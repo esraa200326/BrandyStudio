@@ -31,7 +31,7 @@ interface ProjectTypeSelectorProps {
   onChange: (type: string) => void;
 }
 
-const ProjectTypeSelector = ({ selected, onChange }: ProjectTypeSelectorProps) => {
+const ProjectTypeSelector = ({ selected, onChange }: { selected: string; onChange: (type: string) => void }) => {
   const types = ["Branding", "Web Design", "Social Media", "Other"];
   
   return (
