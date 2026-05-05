@@ -336,30 +336,28 @@ const Identity = () => {
 };
 
 // 4. Team Section (Dark)
-const TeamMember = ({ name, role, img, color }: { name: string, role: string, img: string, color: string }) => (
-  <motion.div 
-    whileHover={{ scale: 1.04, rotate: 1.5 }}
-    transition={{ type: "spring", stiffness: 200, damping: 15 }}
-    className="group relative w-full aspect-[3/4] rounded-[2.5rem] overflow-hidden border-2 border-[#333] bg-[#111]"
-  >
-    <img
-      src={img}
-      alt={name}
-      className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 scale-105 group-hover:scale-100 transition-all duration-700"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-    <div className="absolute inset-0 flex flex-col justify-end p-6">
-      <div 
-        className="absolute top-5 right-5 p-3 rounded-full border-2 border-black rotate-12 group-hover:rotate-0 transition-all duration-300"
-        style={{ backgroundColor: color }}
-      >
-        <ArrowUpRight size={22} color="black" />
-      </div>
-      <h4 className="text-3xl font-black text-white uppercase leading-tight group-hover:text-[#dcc1ff] transition-colors">{name}</h4>
-      <p className="mt-1 text-sm text-gray-400 font-mono max-w-[90%]">{role}</p>
+const ProjectTypeSelector = ({ selected, onChange }: { selected: string; onChange: (type: string) => void }) => {
+  const types = ["Branding", "Web Design", "Social Media", "Other"];
+  
+  return (
+    <div className="flex flex-wrap gap-3 mb-8">
+      {types.map((type) => (
+        <button
+          key={type}
+          onClick={() => onChange(type)}
+          type="button"
+          className={`px-6 py-2 rounded-full border-2 transition-all duration-300 text-sm md:text-base font-bold uppercase tracking-wider
+            ${selected === type 
+              ? `bg-[#dcc1ff] text-black border-[#dcc1ff] shadow-[0_0_15px_#dcc1ff]` 
+              : `bg-transparent text-[#dcc1ff] border-[#dcc1ff]/30 hover:border-[#dcc1ff]`
+            }`}
+        >
+          {type}
+        </button>
+      ))}
     </div>
-  </motion.div>
-);
+  );
+};
 
 const Team = () => {
   return (
